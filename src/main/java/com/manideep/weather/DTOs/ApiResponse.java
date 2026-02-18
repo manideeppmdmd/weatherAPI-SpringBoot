@@ -1,10 +1,8 @@
 package com.manideep.weather.DTOs;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.manideep.weather.exceptions.ApiError;
-
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,11 +1,13 @@
 package com.manideep.weather.DTOs;
 
-import java.util.ArrayList;
+import java.util.List;
+import lombok.Getter;
 
+@Getter
 public class OpenWeatherAPIResponse {
 
   public Coord coord;
-  public ArrayList<Weather> weather;
+  public List<Weather> weather;
   public String base;
   public Main main;
   public int visibility;
@@ -13,22 +15,25 @@ public class OpenWeatherAPIResponse {
   public Clouds clouds;
   public int dt;
   public Sys sys;
-  public int id;
+  public Long id;
   public String name;
   public int cod;
 
-  public class Clouds {
+  @Getter
+  public static class Clouds {
 
     public int all;
   }
 
-  public class Coord {
+  @Getter
+  public static class Coord {
 
     public double lon;
     public double lat;
   }
 
-  public class Main {
+  @Getter
+  public static class Main {
 
     public double temp;
     public int pressure;
@@ -37,7 +42,8 @@ public class OpenWeatherAPIResponse {
     public double temp_max;
   }
 
-  public class Sys {
+  @Getter
+  public static class Sys {
 
     public int type;
     public int id;
@@ -47,7 +53,8 @@ public class OpenWeatherAPIResponse {
     public int sunset;
   }
 
-  public class Weather {
+  @Getter
+  public static class Weather {
 
     public int id;
     public String main;
@@ -55,7 +62,8 @@ public class OpenWeatherAPIResponse {
     public String icon;
   }
 
-  public class Wind {
+  @Getter
+  public static class Wind {
 
     public double speed;
     public int deg;

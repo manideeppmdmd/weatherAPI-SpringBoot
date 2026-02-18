@@ -32,6 +32,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'io.github.cdimascio:dotenv-java:3.2.0'
+	implementation 'org.springframework.retry:spring-retry:2.0.12'
+    implementation 'org.springframework.boot:spring-boot-starter-aop:3.5.9'
 }
 
 tasks.named('test') {
