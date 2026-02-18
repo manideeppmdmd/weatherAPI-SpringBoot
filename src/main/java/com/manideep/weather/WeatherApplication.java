@@ -3,11 +3,21 @@ package com.manideep.weather;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvEntry;
+
 @SpringBootApplication
 public class WeatherApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WeatherApplication.class, args);
-	}
+  public static void main(String[] args) {
+    Dotenv dotEnv = Dotenv.configure().load();
 
+    dotEnv
+      .entries()
+      .forEach((DotenvEntry entry) ->
+        System.setProperty(entry.getKey(), entry.getValue())
+      );
+
+    SpringApplication.run(WeatherApplication.class, args);
+  }
 }
