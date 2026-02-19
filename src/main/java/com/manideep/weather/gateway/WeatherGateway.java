@@ -1,6 +1,7 @@
 package com.manideep.weather.gateway;
 
 import com.manideep.weather.DTOs.OpenWeatherAPIResponse;
+import com.manideep.weather.DTOs.SourceStatus;
 import com.manideep.weather.DTOs.WeatherResponseDTO;
 import com.manideep.weather.exceptions.CityNotFoundException;
 import com.manideep.weather.exceptions.InvalidApiKeyException;
@@ -37,7 +38,7 @@ public class WeatherGateway implements IWeatherGateway {
       ResourceAccessException.class,
       WeatherServiceUnavailableException.class,
     },
-    maxAttempts = 1
+    maxAttempts = 2
   )
   @Override
   public WeatherResponseDTO getWeatherAtCity(String cityName) {
@@ -80,9 +81,10 @@ public class WeatherGateway implements IWeatherGateway {
           .body(OpenWeatherAPIResponse.class);
 
         WeatherResponseDTO weatherDTO = WeatherMapper.toDTO(response);
+        weatherDTO.setSource(SourceStatus.LIVE);
         this.cachedWeather = weatherDTO;
       }
-
+      this.cachedWeather.setSource(SourceStatus.CACHE);
       return this.cachedWeather;
     } catch (ResourceAccessException e) {
       throw new WeatherServiceUnavailableException();

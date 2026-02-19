@@ -1,7 +1,6 @@
 package com.manideep.weather.DTOs;
 
 import java.time.Instant;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,4 +19,5 @@ public class WeatherResponseDTO {
   private Double temperature;
   private String description;
   private Instant fetchedAt;
+  private SourceStatus source;
 }
